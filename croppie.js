@@ -697,8 +697,8 @@
             }
 
             transform = Transform.parse(self.elements.preview);
-            window.addEventListener('mousemove', mouseMove);
-            window.addEventListener('touchmove', mouseMove);
+            window.addEventListener('mousemove', mouseMove, { passive: false });
+            window.addEventListener('touchmove', mouseMove, { passive: false });
             window.addEventListener('mouseup', mouseUp);
             window.addEventListener('touchend', mouseUp);
             document.body.style[CSS_USERSELECT] = 'none';
