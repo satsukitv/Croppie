@@ -495,7 +495,7 @@
             css(self.elements.preview, transCss);
         }
 
-        self._currentZoom = ui ? ui.value : self._currentZoom;
+        self._currentZoom = Math.max(self.options.viewport.width / self.elements.preview.width,self.options.viewport.height / self.elements.preview.height, ui ? ui.value : self._currentZoom);
         transform.scale = self._currentZoom;
         applyCss();
 
@@ -990,11 +990,11 @@
                 startY = Math.abs(top);
                 top = 0;
             }
-            if (right > self._originalImageWidth) {
+            if ((left + width) > self._originalImageWidth) {
                 width = self._originalImageWidth - left;
                 outWidth = width;
             }
-            if (bottom > self._originalImageHeight) {
+            if ((top + height) > self._originalImageHeight) {
                 height = self._originalImageHeight - top;
                 outHeight = height;
             }
